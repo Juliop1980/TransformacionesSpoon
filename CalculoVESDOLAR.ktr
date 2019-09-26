@@ -437,147 +437,26 @@
   </notepads>
   <order>
     <hop>
-      <from>Group by</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Group by 2</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>JSON input</from>
-      <to>Group by</to>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>JSON input 2</from>
-      <to>Replace in string</to>
+      <from>JSON input 3</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in string</from>
-      <to>Select values</to>
+      <from>Multiway merge join</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Group by 2</to>
+      <from>Table input</from>
+      <to>Multiway merge join</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Formula</name>
-    <type>Formula</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>640</xloc>
-      <yloc>128</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Group by</name>
-    <type>GroupBy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname />
-    <give_back_row>Y</give_back_row>
-    <group>
-      </group>
-    <fields>
-      <field>
-        <aggregate>promedio_bitstamp</aggregate>
-        <subject>bitstamp</subject>
-        <type>AVERAGE</type>
-        <valuefield />
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>384</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Group by 2</name>
-    <type>GroupBy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore />
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>N</add_linenr>
-    <linenr_fieldname />
-    <give_back_row>Y</give_back_row>
-    <group>
-      </group>
-    <fields>
-      <field>
-        <aggregate>precioPromedioVES</aggregate>
-        <subject>$..temp_price</subject>
-        <type>AVERAGE</type>
-        <valuefield />
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>544</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>JSON input</name>
     <type>JsonInput</type>
@@ -591,15 +470,15 @@
     </partitioning>
     <include>N</include>
     <include_field />
-    <rownum>N</rownum>
+    <rownum>Y</rownum>
     <addresultfile>N</addresultfile>
     <readurl>N</readurl>
     <removeSourceField>N</removeSourceField>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
     <doNotFailIfNoFile>N</doNotFailIfNoFile>
     <ignoreMissingPath>Y</ignoreMissingPath>
-    <defaultPathLeafToNull>Y</defaultPathLeafToNull>
-    <rownum_field />
+    <defaultPathLeafToNull>N</defaultPathLeafToNull>
+    <rownum_field>id</rownum_field>
     <file>
       <name>/home/julio/Documentos/Localbitcoins/ofertaLBTC/</name>
       <filemask />
@@ -643,13 +522,13 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>64</yloc>
+      <xloc>75</xloc>
+      <yloc>362</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>JSON input 2</name>
+    <name>JSON input 3</name>
     <type>JsonInput</type>
     <description />
     <distribute>Y</distribute>
@@ -661,15 +540,15 @@
     </partitioning>
     <include>N</include>
     <include_field />
-    <rownum>N</rownum>
+    <rownum>Y</rownum>
     <addresultfile>N</addresultfile>
     <readurl>N</readurl>
     <removeSourceField>N</removeSourceField>
     <IsIgnoreEmptyFile>N</IsIgnoreEmptyFile>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
+    <doNotFailIfNoFile>Y</doNotFailIfNoFile>
     <ignoreMissingPath>Y</ignoreMissingPath>
     <defaultPathLeafToNull>Y</defaultPathLeafToNull>
-    <rownum_field />
+    <rownum_field>id</rownum_field>
     <file>
       <name>/home/julio/Documentos/Localbitcoins/ofertaLBTC/</name>
       <filemask />
@@ -679,10 +558,10 @@
     </file>
     <fields>
       <field>
-        <name>$..temp_price</name>
-        <path>$..temp_price</path>
-        <type>String</type>
-        <format />
+        <name>caracas_date_time</name>
+        <path>$..ccs_datetime</path>
+        <type>Timestamp</type>
+        <format>yyyy-MM-dd_HH.mm.ss</format>
         <currency />
         <decimal />
         <group />
@@ -692,10 +571,10 @@
         <repeat>N</repeat>
       </field>
     </fields>
-    <limit>100000000000</limit>
+    <limit>0</limit>
     <IsInFields>N</IsInFields>
     <IsAFile>N</IsAFile>
-    <valueField>bitstamp</valueField>
+    <valueField>ccs_date_time</valueField>
     <shortFileFieldName />
     <pathFieldName />
     <hiddenFieldName />
@@ -713,14 +592,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>208</yloc>
+      <xloc>75</xloc>
+      <yloc>250</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Replace in string</name>
-    <type>ReplaceString</type>
+    <name>Multiway merge join</name>
+    <type>MultiwayMergeJoin</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -729,18 +608,102 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <join_type>INNER</join_type>
+    <step0>JSON input 3</step0>
+    <step1>JSON input</step1>
+    <step2>Table input</step2>
+    <number_input>3</number_input>
+    <keys>
+      <key>id</key>
+      <key>id</key>
+      <key>id</key>
+    </keys>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>299</xloc>
+      <yloc>266</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table input</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection />
+    <sql>SELECT id,avg FROM bolivares_agregados;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>75</xloc>
+      <yloc>154</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection />
+    <schema>public</schema>
+    <table>datosoferta</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field />
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field />
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field />
     <fields>
       <field>
-        <in_stream_name>$..temp_price</in_stream_name>
-        <out_stream_name />
-        <use_regex>no</use_regex>
-        <replace_string>.</replace_string>
-        <replace_by_string>,</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string />
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
+        <column_name>bitstamp</column_name>
+        <stream_name>bitstamp</stream_name>
+      </field>
+      <field>
+        <column_name>fecha</column_name>
+        <stream_name>caracas_date_time</stream_name>
+      </field>
+      <field>
+        <column_name>bolivares_ponderados</column_name>
+        <stream_name>avg</stream_name>
       </field>
     </fields>
     <attributes />
@@ -752,56 +715,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>224</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>$..temp_price</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>$..temp_price</name>
-        <rename>$..temp_price</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>208</yloc>
+      <xloc>427</xloc>
+      <yloc>266</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
